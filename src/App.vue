@@ -17,7 +17,7 @@ import {Userstate} from "tmi.js";
 import {generateEmote} from "@/utils/functions";
 import {EmoteSet, ChatMessages} from "@/utils/types";
 import ChatMessage from "@/components/ChatMessage.vue";
-import Vue from 'vue';
+const Vue = require("vue").default;
 
 export default Vue.extend({
 	name: "App",
