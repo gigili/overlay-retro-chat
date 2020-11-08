@@ -72,17 +72,20 @@ export default Vue.extend({
 			});
 		});
 	},
-	data() {
+	data(): { messages: ChatMessages[] } {
 		const messages: ChatMessages[] = [];
 		return {
-			messages
+			messages: messages
 		}
 	},
 	methods: {
-		addMessage(message: ChatMessages) {
+		addMessage(message: ChatMessages): void {
+			//@ts-ignore
 			this.messages = this.messages.filter((msg: ChatMessages) => msg.timestamp > (Date.now() - (30 * 1000)))
+			//@ts-ignore
 			this.messages.push(message);
 
+			//@ts-ignore
 			this.$nextTick(() => {
 				window.scrollTo(0, document.body.scrollHeight);
 			});
