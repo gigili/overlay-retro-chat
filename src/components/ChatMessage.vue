@@ -12,12 +12,10 @@
 </template>
 
 <script>
-import Vue from "vue";
-
-export default Vue.extends({
+export default{
 	props: ["message", "userState", "direction"],
 	name: "ChatMessage",
-})
+}
 </script>
 
 <style scoped>
