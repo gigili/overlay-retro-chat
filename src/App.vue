@@ -14,10 +14,12 @@
 <script lang="ts">
 import * as tmi from "tmi.js";
 import {Userstate} from "tmi.js";
-import ChatMessage from "@/components/ChatMessage"
 import {generateEmote} from "@/utils/functions";
+import {EmoteSet, ChatMessages} from "@/utils/types";
+import ChatMessage from "@/components/ChatMessage.vue";
+import Vue from 'vue';
 
-export default {
+export default Vue.extend({
 	name: "App",
 	components: {
 		ChatMessage,
@@ -41,7 +43,7 @@ export default {
 			let tempMessage = message;
 			// If the message has emotes, modify message to include img tags to the emote
 			if (userState.emotes) {
-				const emoteSet = [];
+				const emoteSet: EmoteSet[] = [];
 				for (const emote of Object.keys(userState.emotes)) {
 					const emoteLocations = userState.emotes[emote];
 					emoteLocations.forEach((location) => {
@@ -71,21 +73,22 @@ export default {
 		});
 	},
 	data() {
+		const messages: ChatMessages[] = [];
 		return {
-			messages: []
+			messages
 		}
 	},
 	methods: {
-		addMessage(message: ChatMessage) {
-			this.messages = this.messages.filter((msg: ChatMessage) => msg.timestamp > (Date.now() - (30 * 1000)))
+		addMessage(message: ChatMessages) {
+			this.messages = this.messages.filter((msg: ChatMessages) => msg.timestamp > (Date.now() - (30 * 1000)))
 			this.messages.push(message);
 
 			this.$nextTick(() => {
-				window.scrollTo(0,document.body.scrollHeight);
+				window.scrollTo(0, document.body.scrollHeight);
 			});
 		}
 	},
-}
+})
 </script>
 
 <style lang="scss">

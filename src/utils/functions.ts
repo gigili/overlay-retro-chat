@@ -1,4 +1,6 @@
-export function generateEmote(emoteId: string, position: string){
+import {EmoteSet} from "@/utils/types";
+
+export function generateEmote(emoteId: string, position: string): EmoteSet{
 	const [start, end] = position.split('-').map(Number);
 
 	return {
