@@ -47,5 +47,8 @@ export default {
 	margin-left: 15px;
 	margin-right: 15px;
 	font-size: 15px;
+	background: #f1f1fc;
+	padding: 10px;
+	box-shadow: 5px 5px #00000055;
 }
 </style>

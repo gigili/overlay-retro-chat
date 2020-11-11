@@ -107,13 +107,25 @@ export default Vue.extend({
 		addMessage(message: ChatMessages): void {
 			//@ts-ignore
 			this.messages = this.messages.filter((msg: ChatMessages) => msg.timestamp > (Date.now() - (30 * 1000)))
+
 			//@ts-ignore
-			this.messages.push(message);
+			if (this.messages.length > 0 && this.messages[this.messages.length - 1].userState.username === message.userState.username) {
+				//@ts-ignore
+				this.messages[this.messages.length - 1].text += '<br/><br/><hr/><br/>' + message.text
+			} else {
+				//@ts-ignore
+				this.messages.push(message);
+			}
 
 			//@ts-ignore
 			this.$nextTick(() => {
 				window.scrollTo(0, document.body.scrollHeight);
 			});
+		},
+
+		removeOldMessages() {
+			//@ts-ignore
+			this.messages = this.messages.filter((msg: ChatMessages) => msg.timestamp > (Date.now() - (30 * 1000)))
 		},
 
 		getTokenData(): void {
@@ -158,7 +170,8 @@ export default Vue.extend({
 			});
 		}
 	},
-})
+});
+
 </script>
 
 <style lang="scss">

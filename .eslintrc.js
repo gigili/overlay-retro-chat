@@ -15,6 +15,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     "@typescript-eslint/ban-ts-ignore": "off",
-    'vue/no-async-in-computed-properties': 'off'
+    'vue/no-async-in-computed-properties': 'off',
+    'no-mixed-spaces-and-tabs': 'off',
+    '@typescript-eslint/no-explicit-any': 'off'
   }
 }
