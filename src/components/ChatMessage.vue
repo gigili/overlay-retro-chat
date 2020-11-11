@@ -5,15 +5,18 @@
 			<p class="message-text" v-html="message"></p>
 		</div>
 		<div class="fr" :class="{'fr-left': direction === 'left', 'fr-right': direction === 'right'}">
-			<i class="nes-bcrikko"></i>
+			<img
+				class="nes-avatar is-rounded is-large"
+				:src="user.profileImage"/> <!--style="image-rendering: pixelated;"-->
+			<!--<i class="nes-bcrikko"></i>-->
 			<p class="displayName">{{ userState["display-name"] }}</p>
 		</div>
 	</section>
 </template>
 
 <script>
-export default{
-	props: ["message", "userState", "direction"],
+export default {
+	props: ["message", "userState", "direction", "user"],
 	name: "ChatMessage",
 }
 </script>
