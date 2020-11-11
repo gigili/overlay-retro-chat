@@ -49,6 +49,6 @@ export default {
 	font-size: 15px;
 	background: #f1f1fc;
 	padding: 10px;
-	box-shadow: 5px 5px #00000055;
+	box-shadow: 5px 5px #88888855;
 }
 </style>
