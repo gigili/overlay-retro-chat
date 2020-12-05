@@ -91,6 +91,11 @@ export default Vue.extend({
 				user
 			});
 		});
+
+		setInterval(() => {
+			//@ts-ignore
+			this.removeOldMessages();
+		}, 1500);
 	},
 	data(): { messages: ChatMessages[]; tkn: string } {
 		const messages: ChatMessages[] = [];
@@ -106,16 +111,18 @@ export default Vue.extend({
 		...mapMutations("UserStore", ["setToken", "setProfileImage", "addUser"]),
 		addMessage(message: ChatMessages): void {
 			//@ts-ignore
-			this.messages = this.messages.filter((msg: ChatMessages) => msg.timestamp > (Date.now() - (30 * 1000)))
-
-			//@ts-ignore
 			if (this.messages.length > 0 && this.messages[this.messages.length - 1].userState.username === message.userState.username) {
 				//@ts-ignore
-				this.messages[this.messages.length - 1].text += '<br/><br/><hr/><br/>' + message.text
+				this.messages[this.messages.length - 1].text += '<br/><br/><hr/><br/>' + message.text;
+        //@ts-ignore
+				this.messages[this.messages.length - 1].timestamp = message.timestamp;
 			} else {
 				//@ts-ignore
 				this.messages.push(message);
 			}
+
+      //@ts-ignore
+      this.removeOldMessages();
 
 			//@ts-ignore
 			this.$nextTick(() => {
