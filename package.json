@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "core-js": "^3.8.0",
+    "core-js": "^3.8.1",
     "nes.css": "^2.3.0",
     "sweet-scroll": "^4.0.0",
     "tmi.js": "^1.5.0",
